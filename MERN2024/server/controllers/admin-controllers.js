@@ -1,5 +1,6 @@
 const User = require("../models/user-model");
 const Contact = require("../models/contact-model");
+const Service = require("../models/service-model");
 
 //logic for fetching users
 const getAllUsers = async (req, res, next) => {
@@ -36,6 +37,17 @@ const deleteUserById = async (req, res) =>{
         const id = req.params.id;
         await User.deleteOne({ _id: id});
         res.status(200).json({ message: "User Deleted Successfully."});
+    } catch (error) {
+        next(error);
+    }
+};
+
+//logic for deleting the service
+const deleteServiceById =  async (req, res,next) => {
+    try {
+        const id = req.params.id;
+        await Service.deleteOne({ _id: id});
+        res.status(200).json({message: "Service Deleted Successfully."});
     } catch (error) {
         next(error);
     }
@@ -79,5 +91,34 @@ const deleteContactById = async (req, res) =>{
     }
 };
 
+//logic for getting single service 
+const getServiceById = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const data = await Service.findOne({_id : id});
+        return res.status(200).json({data});
+    } catch (error) {
+        next(error);
+    }
+};
 
-module.exports = { getAllUsers , getAllContacts, deleteUserById,getUserById, updateUserById, deleteContactById };
+//logic for updating the single service
+const updateServiceById = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const updateServiceData = req.body;
+
+        const updatedService = await Service.updateOne({_id:id},{
+            $set: updateServiceData,
+        });
+        return res.status(200).json(updatedService);
+    } catch (error) {
+        next(error);
+    }
+};
+
+
+
+module.exports = { getAllUsers , getAllContacts, deleteUserById,getUserById, updateUserById, deleteContactById, getServiceById, updateServiceById,
+    deleteServiceById
+ };

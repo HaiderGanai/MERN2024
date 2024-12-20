@@ -45,17 +45,44 @@ export const AdminContacts = () => {
         getContactsData();
     }, []);
     return(
-        <>
-        {contactData.map((curContactData, Index) => {
-            const { username, email, message, _id } = curContactData;
-            return <div key={Index}>
-                <p>{username}</p>
-                <p>{email}</p>
-                <p>{message}</p>
-                <button onClick={() => deleteContactById(_id)}>delete</button>
+        <div style={{ width: '100%', padding: '20px' }}>
+            <h1 style={{ textAlign: "center", marginBottom: "20px" }}>Contact Messages</h1>
+            <div style={{ display: 'grid', gap: '20px', width: '100%' }}>
+                {contactData.map((curContactData, Index) => {
+                    const { username, email, message, _id } = curContactData;
+                    return (
+                        <div 
+                            key={Index} 
+                            style={{
+                                width: '100%',
+                                padding: '20px',
+                                border: '1px solid #ddd',
+                                borderRadius: '8px',
+                                backgroundColor: 'white',
+                                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                            }}
+                        >
+                            <p><strong>Username:</strong> {username}</p>
+                            <p><strong>Email:</strong> {email}</p>
+                            <p><strong>Message:</strong> {message}</p>
+                            <button 
+                                onClick={() => deleteContactById(_id)}
+                                style={{
+                                    marginTop: '10px',
+                                    padding: '8px 16px',
+                                    backgroundColor: '#dc3545',
+                                    color: 'white',
+                                    border: 'none',
+                                    borderRadius: '4px',
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    );
+                })}
             </div>
-        })}
-
-        </>
-    )
+        </div>
+    );
 };

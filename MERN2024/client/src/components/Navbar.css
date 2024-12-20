@@ -1,0 +1,68 @@
+/* Resetting margin and padding for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+.navbar-header {
+  background-color: #f8f9fa; /* Light background for the navbar */
+  padding: 1rem 0;
+}
+
+.container {
+  max-width: 140rem;
+  margin: 0 auto;
+  padding: 0 2.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-brand a {
+  font-size: 3rem; /* Adjust the size of your logo text */
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+nav ul {
+  display: flex !important;  /* Flex to arrange items horizontally */
+  list-style: none;          /* Remove bullet points */
+  gap: 3.2rem;               /* Space between items */
+}
+
+nav ul li {
+  display: inline-block;      /* Display list items horizontally */
+}
+
+nav a {
+  text-decoration: none;       /* Remove underline */
+  color: #333;                 /* Default color */
+  font-size: 1.8rem;           /* Link text size */
+  font-weight: 500;            /* Boldness of links */
+  transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+  color: #007bff;              /* Color change on hover */
+}
+
+nav ul li a {
+  display: block;              /* Block level to fill the li */
+  padding: 1rem 1.5rem;        /* Padding for clickable area */
+}
+
+nav ul li a.active {
+  font-weight: bold;           /* Bold active link */
+  color: #007bff;              /* Active link color */
+}
+
+nav ul li a:hover {
+  background-color: rgba(0, 123, 255, 0.1); /* Background color on hover */
+  border-radius: 5px;                  /* Rounded corners for hover effect */
+}

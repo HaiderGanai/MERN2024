@@ -24,6 +24,8 @@ app.use(cors(corsOptions));
 //to use json in our application, it is a middlewares, it parses any data incoming in request bodies
 // must be written before routes so that it is applies to all the susequest routes
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 
 
 

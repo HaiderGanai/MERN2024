@@ -1,35 +1,65 @@
 import { useEffect, useState } from "react";
 import { useAuthContext } from "../contexts/auth";
+import aboutImage from "../assets/resources/about.png"
 
 export const About = () => {
-
-     const { user } = useAuthContext();
+    const { user } = useAuthContext();
     const [userData, setUserData] = useState(null);
 
-    useEffect(() =>{
-        setUserData(user.username);
+    useEffect(() => {
+        setUserData(user?.username);
     }, [user]);
 
-    return(
+    return (
         <>
-            <h2>Hi {userData ? userData : "Guest" }</h2>
-            <h1>Abou Us</h1>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br />
-                Laudantium ut corrupti tempore sed quasi, <br />
-                 provident quo magni laborum quibusdam iusto.</p>
-
-                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br />
-                Laudantium ut corrupti tempore sed quasi, <br />
-                 provident quo magni laborum quibusdam iusto.</p>
-
-                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br />
-                Laudantium ut corrupti tempore sed quasi, <br />
-                 provident quo magni laborum quibusdam iusto.</p>
-
-            <button>Connect Now</button> <button>Learn More</button>
-
-            
-        
+            <main>
+                <section className="section-hero">
+                    <div className="container grid grid-two-cols">
+                        <div className="hero-content">
+                            <h2>Hi {userData ? userData : "Guest"}</h2>
+                            <h1>Why Choose Us?</h1>
+                            <p>
+                                Expertise: Our team consists of experienced IT professionals who
+                                are passionate about staying up-to-date with the latest industry
+                                trends.
+                            </p>
+                            <p>
+                                Customization: We understand that every business is unique.
+                                That's why we create solutions that are tailored to your specific
+                                needs and goals.
+                            </p>
+                            <p>
+                                Customer-Centric Approach: We prioritize your satisfaction and
+                                provide top-notch support to address your IT concerns.
+                            </p>
+                            <p>
+                                Affordability: We offer competitive pricing without compromising
+                                on the quality of our services.
+                            </p>
+                            <p>
+                                Reliability: Count on us to be there when you need us. We're
+                                committed to ensuring your IT environment is reliable and
+                                available 24/7.
+                            </p>
+                            <div className="btn btn-group">
+                                <a href="/login">
+                                    <button className="btn">Connect Now</button>
+                                </a>
+                                
+                                <button className="btn secondary-btn">Learn More</button>
+                            </div>
+                        </div>
+                        <div className="hero-image">
+                            <img
+                                src={aboutImage}
+                                alt="coding buddies"
+                                width="400"
+                                height="500"
+                            />
+                        </div>
+                    </div>
+                </section>
+            </main>
         </>
-    )
+    );
 };
